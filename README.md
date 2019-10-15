@@ -1,4 +1,4 @@
-# Log IP Analyzer
+# Log IP GeoInfo
 
 Install and activate Python 3 virtual environment:
 
@@ -16,4 +16,4 @@ Download the current GeoLite2 database, unpack it and copy the file **GeoLite2-C
 
 Run the script with the log file path as argument:
 
-    python log-ip-analyzer.py path/to/logfile.log
+    python log-ip-geoinfo.py path/to/logfile.log
