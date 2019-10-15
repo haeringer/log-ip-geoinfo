@@ -4,8 +4,9 @@ import sys
 import re
 import subprocess
 
-from ip2geotools.databases.noncommercial import HostIP
+from ip2geotools.databases.noncommercial import MaxMindGeoLite2City
 
+DB_PATH = 'databases/GeoLite2-City.mmdb'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('arg', nargs='?', default=None)
@@ -47,11 +48,11 @@ def query_geoip_database(ip_set):
     with open('output.txt', 'w') as file_:
         for entry in ip_set:
             try:
-                response = HostIP.get(entry)
+                response = MaxMindGeoLite2City.get(entry, db_path=DB_PATH)
                 file_.write(response.to_json() + '\n')
                 print('.', end='', flush=True)
             except Exception as e:
-                print(str(e))
+                print('Invalid: ' + str(e), end='', flush=True)
 
 
 access_log = open_file_and_return_as_set(filename)
